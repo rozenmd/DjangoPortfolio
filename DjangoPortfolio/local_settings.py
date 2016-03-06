@@ -18,7 +18,7 @@ DATABASES = {
         # DB name or path to database file if using sqlite3.
         "NAME": "portfolio",
         # Not used with sqlite3.
-        "USER": "smoke",
+        "USER": "postgres",
         # Not used with sqlite3.
         "PASSWORD": "spez",
         # Set to empty string for localhost. Not used with sqlite3.
