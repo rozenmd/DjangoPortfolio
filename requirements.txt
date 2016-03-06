@@ -6,13 +6,14 @@ django-contrib-comments==1.6.2
 ecdsa==0.13
 Fabric==1.10.2
 filebrowser-safe==0.4.3
-future==0.15.2
+future==0.15.0
 grappelli-safe==0.4.2
 html5lib==0.9999999
 Mezzanine==4.1.0
 oauthlib==1.0.3
 paramiko==1.16.0
 Pillow==3.1.1
+psycopg2==2.6.1
 pycrypto==2.6.1
 pytz==2015.7
 requests==2.9.1
