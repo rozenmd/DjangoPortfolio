@@ -24,9 +24,12 @@ urlpatterns = i18n_patterns(
 if settings.USE_MODELTRANSLATION:
     urlpatterns += [
         url('^i18n/$', set_language, name='set_language'),
+
     ]
 
 urlpatterns += [
+    url(r'^(?P<path>(?:js|css|img)/.*)$', 'serve'),
+
     # We don't want to presume how your homepage works, so here are a
     # few patterns you can use to set it up.
 

@@ -32,7 +32,9 @@ server {
         proxy_set_header    X-Forwarded-Protocol    $scheme;
         proxy_pass          http://%(proj_name)s;
     }
-
+    location /single-page/{
+        alias %(proj_path)s/single-path;
+    }
     location /static/ {
         root            %(proj_path)s;
         access_log      off;
