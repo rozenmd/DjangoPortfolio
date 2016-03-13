@@ -33,7 +33,7 @@ DATABASES = {
 ###################
 
 # Domains for public site
-ALLOWED_HOSTS = ["maxrozen.com","localhost","52.62.215.85"]
+ALLOWED_HOSTS = ["maxrozen.com","localhost","52.62.215.85","www.maxrozen.com"]
 
 # These settings are used by the default fabfile.py provided.
 # Check fabfile.py for defaults.
