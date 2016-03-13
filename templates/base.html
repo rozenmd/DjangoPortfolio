@@ -14,11 +14,15 @@
 <link rel="alternate" type="application/rss+xml" title="RSS" href="{% url "blog_post_feed" "rss" %}">
 <link rel="alternate" type="application/atom+xml" title="Atom" href="{% url "blog_post_feed" "atom" %}">
 {% endifinstalled %}
-
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
 {% compress css %}
+
 <link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
 <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
 <link rel="stylesheet" href="{% static "css/bootstrap-theme.css" %}">
+<link rel="stylesheet" href="{% static "css/max-theme.css" %}">
 {% if LANGUAGE_BIDI %}
 <link rel="stylesheet" href="{% static "css/bootstrap-rtl.css" %}">
 {% endif %}
@@ -27,8 +31,10 @@
 {% if LANGUAGE_BIDI %}
 <link rel="stylesheet" href="{% static "css/cartridge.rtl.css" %}">
 {% endif %}
+
 {% endifinstalled %}
 {% block extra_css %}{% endblock %}
+
 {% endcompress %}
 
 {% compress js %}
@@ -63,7 +69,7 @@
     {% endblock%}
 </div>
 <div class="navbar-collapse collapse">
-    {% block navbar_search_form %}{% search_form "all" %}{% endblock %}
+{#    {% block navbar_search_form %}{% search_form "all" %}{% endblock %}#}
     {% block navbar_dropdown_menu %}{% page_menu "pages/menus/dropdown.html" %}{% endblock%}
 </div>
 </div>
@@ -84,68 +90,61 @@
 {% endif %}
 {% endnevercache %}
 
-<h1>{% block title %}{% endblock %}</h1>
+<h1 class="headerOverride">{% block title %}{% endblock %}</h1>
 
-<ul class="breadcrumb">
-{% spaceless %}
-{% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}
-{% endspaceless %}
-</ul>
+{#<ul class="breadcrumb">#}
+{#{% spaceless %}#}
+{#{% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}#}
+{#{% endspaceless %}#}
+{#</ul>#}
 
 </div>
 
-<div class="container">
-<div class="row">
+<div class="container clearfix ">
+<div class="row clearfix">
 
-<div class="col-md-2 left">
-    {% block left_panel %}
-    <div class="panel panel-default tree">{% page_menu "pages/menus/tree.html" %}</div>
-    {% endblock %}
-</div>
+{#<div class="col-md-2 left">#}
+{#    {% block left_panel %}#}
+{#    <div class="panel panel-default tree">{% page_menu "pages/menus/tree.html" %}</div>#}
+{#    {% endblock %}#}
+{#</div>#}
 
-<div class="col-md-7 middle">
+<div class="col-md-12 middle clearfix">
     {% block main %}{% endblock %}
 </div>
 
-<div class="col-md-3 right">
-    {% nevercache %}
-    {% include "includes/language_selector.html" %}
-    {% include "includes/user_panel.html" %}
-    {% endnevercache %}
-    <div class="panel panel-default">
-    <div class="panel-body">
-    {% block right_panel %}
-    {% ifinstalled mezzanine.twitter %}
-    {% include "twitter/tweets.html" %}
-    {% endifinstalled %}
-    {% endblock %}
-    </div>
-    </div>
+{#<div class="col-md-3 right">#}
+{#    {% nevercache %}#}
+{#    {% include "includes/language_selector.html" %}#}
+{#    {% include "includes/user_panel.html" %}#}
+{#    {% endnevercache %}#}
+{#    <div class="panel panel-default">#}
+{#    <div class="panel-body">#}
+{#    {% block right_panel %}#}
+{#    {% ifinstalled mezzanine.twitter %}#}
+{#    {% include "twitter/tweets.html" %}#}
+{#    {% endifinstalled %}#}
+{#    {% endblock %}#}
+{#    </div>#}
+{#    </div>#}
+{#</div>#}
+
 </div>
 
 </div>
-</div>
 
-<footer>
-<div class="container">
+
+<footer class="clearfix">
+
 {% page_menu "pages/menus/footer.html" %}
 
-<div class="row">
-<p class="site-info text-center">
-    {% trans "Powered by" %}
-    <a href="http://mezzanine.jupo.org">Mezzanine</a>{% ifinstalled cartridge.shop %},
-    <a href="http://cartridge.jupo.org">Cartridge</a>{% endifinstalled %}
-    {% trans "and" %}
-    <a href="http://www.djangoproject.com">Django</a>
-    <span class="separator">|</span>
-    {% trans "Theme by" %} <a target="_blank" href="http://getbootstrap.com">Bootstrap</a>
-    {% ifinstalled mezzanine.mobile %}
-    <span class="separator">|</span>
-    <a href="{% url "set_device" "mobile" %}?next={{ request.path }}">{% trans "View Mobile Site" %}</a>
-    {% endifinstalled %}
-</p>
-</div>
-</div>
+{#<div style="align-content:center;text-align:center">#}
+{#        #}
+{#</div>#}
+
+    <section class="copyright">
+            © <a href="http://linkedin.com/in/rozenmd" target="_blank">Max Rozen</a> {% now "Y" %}
+    </section>
 </footer>
 
 {% block footer_js %}
