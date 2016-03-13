@@ -54,7 +54,7 @@
 
 <body id="{% block body_id %}body{% endblock %}">
 
-<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+<div class="navbar navbar-default navbar-fixed-top" role="navigation" style="background-color:white;">
 <div class="container">
 <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -74,7 +74,7 @@
 </div>
 </div>
 </div>
-
+{% block intro %}{% endblock %}
 <div class="container">
 
 {% nevercache %}
@@ -133,6 +133,7 @@
 
 </div>
 
+{% block footerOverride %}
 
 <footer class="clearfix">
 
@@ -146,6 +147,8 @@
             © <a href="http://linkedin.com/in/rozenmd" target="_blank">Max Rozen</a> {% now "Y" %}
     </section>
 </footer>
+
+{% endblock %}
 
 {% block footer_js %}
 {% include "includes/footer_scripts.html" %}

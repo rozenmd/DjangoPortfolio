@@ -1,28 +1,68 @@
 {% extends "base.html" %}
-{% load i18n %}
+{% load i18n mezzanine_tags blog_tags %}
 
-{% block meta_title %}{% trans "Home" %}{% endblock %}
-{% block title %}{% trans "Home" %}{% endblock %}
+{% block intro %}
+    <section class="intro">
+        <div class="intro-body">
+            <div class="huge">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <!-- <img class="logo" src="img/logo.png" alt="" /> -->
+                        <!--<h1 class="brand-heading">segue</h1>-->
+                        <p class="intro-text"></p>
+                        <div class="page-scroll">
+                            <a href="#blog" class="btn btn-circle">
+                                <i class="fa fa-angle-double-down animated"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block main %}
 
-{% block breadcrumb_menu %}
-<li class="active">{% trans "Home" %}</li>
+
+<section id="blog" class="container content-section text-center">
+{#        <div class="row">#}
+{#            <div class="col-lg-12 col-lg-offset-2">#}
+                <!-- Recent Posts -->
+        <h1>RozenMD - Technology blog</h1>
+            <p>
+                This is where I keep the results of my experiments with programming tools, packages, frameworks, and technology in general.
+            </p>
+                {% load blog_tags keyword_tags i18n %}
+                {% blog_recent_posts 5 as recent_posts %}
+                {% if recent_posts %}
+                    <h2>Recent Articles/Posts </h2>
+                    {% for recent_post in recent_posts %}
+                        <h3>
+                            <a href="{{ recent_post.get_absolute_url }}">
+                            {{ recent_post.title }}</a>
+                        </h3>
+
+                    <h4>{{ recent_post.publish_date|timesince }} {% trans "ago" %}</h4>
+                    <div class="clearfix recent-summary">
+                    {{ recent_post.description_from_content|safe }}
+                    <a href="{{ recent_post.get_absolute_url }}" class="label label-inverse">{% trans "read more&hellip;" %}</a>
+                    <hr>
+                     </div><!-- /recent-summary -->
+                    {% endfor %}
+                {% endif %}
+{#            </div><!-- /Recent Posts -->#}
+
+
+{#        </div>#}
+</section>
 {% endblock %}
 
-{% block main %}
-{% blocktrans %}
-<h2>Congratulations!</h2>
-<p>
-    Welcome to your new Mezzanine powered website.
-    Here are some quick links to get you started:
-</p>
-<ul>
-    <li><a href="/admin/">Log in to the admin interface</a></li>
-    <li><a href="http://mezzanine.jupo.org/docs/content-architecture.html">Creating custom page types</a></li>
-    <li><a href="http://mezzanine.jupo.org/docs/frequently-asked-questions.html#templates">Modifying HTML templates</a></li>
-    <li><a href="http://mezzanine.jupo.org/docs/frequently-asked-questions.html#why-isn-t-the-homepage-a-page-object-i-can-edit-via-the-admin">Changing this homepage</a></li>
-    <li><a href="http://mezzanine.jupo.org/docs/frequently-asked-questions.html">Other frequently asked questions</a></li>
-    <li><a href="http://mezzanine.jupo.org/docs/configuration.html#default-settings">Full list of settings</a></li>
-    <li><a href="http://mezzanine.jupo.org/docs/deployment.html">Deploying to a production server</a></li>
-</ul>
-{% endblocktrans %}
+{% block footerOverride %}
+{#    {{ block.super }}#}
+
+    <footer class="clearfix homepageFooter">
+        <section class="copyright">
+                © <a href="http://linkedin.com/in/rozenmd" target="_blank">Max Rozen</a> {% now "Y" %}
+        </section>
+    </footer>
 {% endblock %}

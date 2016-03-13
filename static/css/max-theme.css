@@ -24,7 +24,9 @@ html {
 h1,
 h2,
 h3,
-h4,
+h4 {
+    text-align:center;
+}
 h5,
 h6 {
     /*margin: 0 0 35px;*/
@@ -118,7 +120,7 @@ a:focus {
     //border-bottom: 1px solid rgba(255,255,255,.3);
     text-transform: uppercase;
     font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    background-color: #0e0e0e;
+    background-color: white;
 }
 
 .navbar-brand {
@@ -178,7 +180,22 @@ a:focus {
         border-bottom: 1px solid rgba(255,255,255,.3);
     }
 }
-
+.homepageFooter {
+    position: relative;
+    margin: 8rem 0 0 0;
+    padding: 0.5rem 15px;
+    /*border-top: #EBF2F6 1px solid;*/
+    /*font-family: "Open Sans", sans-serif;*/
+    font-size: 1rem;
+    line-height: 1.75em;
+    color: #BBC7CC;
+}
+.huge {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
 .intro {
     display: table;
     width: 100%;
@@ -186,7 +203,7 @@ a:focus {
     padding: 100px 0;
     text-align: center;
     color: #fff;
-    background: url(../img/intro-bg.jpg) no-repeat scroll;
+    background: url(/static/media/uploads/website/images/intro-bg.jpg) no-repeat scroll;
     background-color: #0e0e0e;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -657,7 +674,7 @@ body {
 .img-responsive {
   /* display: block; */
   display: inline;
-  height: auto;
+  height: 170px;
   max-width: 100%;
 }
 #portfolio .portfolio-item .portfolio-caption {
@@ -703,7 +720,8 @@ footer{
 }
 .headerOverride{
 	text-align:center;
-
+    margin-top:15px;
+    margin-bottom:15px;
 }
 
 .container{
@@ -717,7 +735,7 @@ footer{
 @media (max-width: 1830px), screen and (max-device-width: 1830px) {
 
     .container {
-        width: 64%
+        width: 69%
     }
 }
 
