@@ -28,7 +28,7 @@ if settings.USE_MODELTRANSLATION:
     ]
 
 urlpatterns += [
-    url(r'^(?P<path>(?:js|css|img)/.*)$', 'serve'),
+    
 
     # We don't want to presume how your homepage works, so here are a
     # few patterns you can use to set it up.

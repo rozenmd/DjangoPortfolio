@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="9960e3fe-402b-41cf-acf1-52408cf8d2ce" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoPortfolio/urls.py" afterPath="$PROJECT_DIR$/DjangoPortfolio/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/deploy/nginx.conf.template" afterPath="$PROJECT_DIR$/deploy/nginx.conf.template" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/single-page/can-i-go-outside-yet/index.html" afterPath="$PROJECT_DIR$/single-page/can-i-go-outside-yet/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/single-page/crossfiltercalcs/index.html" afterPath="$PROJECT_DIR$/single-page/crossfiltercalcs/index.html" />
     </list>
     <ignored path="DjangoPortfolio.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DjangoPortfolio/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.56790125">
+              <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -42,10 +39,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nginx.conf.template" pinned="false" current-in-tab="true">
+      <file leaf-file-name="nginx.conf.template" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/deploy/nginx.conf.template">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.1503268">
+            <state vertical-scroll-proportion="-8.111111">
               <caret line="35" column="40" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
               <folding />
             </state>
@@ -69,8 +66,8 @@
         <option value="$PROJECT_DIR$/single-page/vicroads/index.html" />
         <option value="$PROJECT_DIR$/single-page/crossfiltercalcs/index.html" />
         <option value="$PROJECT_DIR$/single-page/can-i-go-outside-yet/index.html" />
-        <option value="$PROJECT_DIR$/DjangoPortfolio/urls.py" />
         <option value="$PROJECT_DIR$/deploy/nginx.conf.template" />
+        <option value="$PROJECT_DIR$/DjangoPortfolio/urls.py" />
       </list>
     </option>
   </component>
@@ -158,20 +155,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="single-page" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DjangoPortfolio" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DjangoPortfolio" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="deploy" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -630,21 +613,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DjangoPortfolio/urls.py">
+    <entry file="file://$PROJECT_DIR$/deploy/nginx.conf.template">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-8.111111">
+          <caret line="35" column="40" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/deploy/nginx.conf.template">
+    <entry file="file://$PROJECT_DIR$/DjangoPortfolio/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1503268">
-          <caret line="35" column="40" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
-          <folding />
+        <state vertical-scroll-proportion="0.56790125">
+          <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
