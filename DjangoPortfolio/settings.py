@@ -198,7 +198,11 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
+            # os.path.join(PROJECT_ROOT, "single-page/can-i-go-outside-yet"),
+            # os.path.join(PROJECT_ROOT, "single-page/crossfiltercalcs"),
+            # os.path.join(PROJECT_ROOT, "single-page/vicroads"),
             os.path.join(PROJECT_ROOT, "templates")
+
         ],
         "APP_DIRS": True,
         "OPTIONS": {

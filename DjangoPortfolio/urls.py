@@ -8,6 +8,7 @@ from django.views.i18n import set_language
 from mezzanine.core.views import direct_to_template
 from mezzanine.conf import settings
 
+from django.views.generic import TemplateView
 
 admin.autodiscover()
 
@@ -28,7 +29,9 @@ if settings.USE_MODELTRANSLATION:
     ]
 
 urlpatterns += [
-    
+
+    # url(r'^single-page/can-i-go-outside-yet/$', TemplateView.as_view(template_name='index.html')),
+
 
     # We don't want to presume how your homepage works, so here are a
     # few patterns you can use to set it up.
