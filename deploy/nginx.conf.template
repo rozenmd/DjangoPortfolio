@@ -32,9 +32,17 @@ server {
         proxy_set_header    X-Forwarded-Protocol    $scheme;
         proxy_pass          http://%(proj_name)s;
     }
-    location /single-page/{
+    location /single-page/vicroads/ {
         autoindex on;
-        root %(proj_path)s/single-path;
+        root %(proj_path)s/;
+    }
+    location /single-page/can-i-go-outside-yet/ {
+        autoindex on;
+        root %(proj_path)s/;
+    }
+    location /single-page/crossfiltercalcs/ {
+        autoindex on;
+        root %(proj_path)s/;
     }
     location /static/ {
         root            %(proj_path)s;

@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9960e3fe-402b-41cf-acf1-52408cf8d2ce" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoPortfolio/settings.py" afterPath="$PROJECT_DIR$/DjangoPortfolio/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DjangoPortfolio/urls.py" afterPath="$PROJECT_DIR$/DjangoPortfolio/urls.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/deploy/nginx.conf.template" afterPath="$PROJECT_DIR$/deploy/nginx.conf.template" />
     </list>
     <ignored path="DjangoPortfolio.iws" />
@@ -54,8 +52,8 @@
       <file leaf-file-name="nginx.conf.template" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/deploy/nginx.conf.template">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5555556">
-              <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
+            <state vertical-scroll-proportion="0.62091506">
+              <caret line="42" column="42" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -136,6 +134,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="DjangoPortfolio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DjangoPortfolio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DjangoPortfolio" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="single-page" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -606,8 +618,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/deploy/nginx.conf.template">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5555556">
-          <caret line="36" column="39" selection-start-line="36" selection-start-column="39" selection-end-line="36" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.62091506">
+          <caret line="42" column="42" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
           <folding />
         </state>
       </provider>
