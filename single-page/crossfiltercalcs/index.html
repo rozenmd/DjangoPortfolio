@@ -181,7 +181,7 @@ function run(){
 </script>
 <script>
 function runDash(codeStr){
-    var filePath = "/companyCsv/" + codeStr + ".csv";
+    var filePath = "/single-page/crossfiltercalcs/companyCsv/" + codeStr + ".csv";
     console.log(filePath);
     d3.csv(filePath, function(data) {
         data.sort(function(a, b){ return d3.ascending(a.date, b.date); });
