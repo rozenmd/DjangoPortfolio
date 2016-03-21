@@ -139,18 +139,22 @@
 
 {% block footerOverride %}
 
-<footer class="clearfix">
+{#<footer class="clearfix">#}
 
 {% page_menu "pages/menus/footer.html" %}
 
 {#<div style="align-content:center;text-align:center">#}
 {#        #}
 {#</div>#}
-
-    <section class="copyright">
-            © <a href="http://linkedin.com/in/rozenmd" target="_blank">Max Rozen</a> {% now "Y" %}
-    </section>
-</footer>
+<footer class="clearfix homepageFooter">
+        <section class="copyright">
+                © <a href="http://linkedin.com/in/rozenmd" target="_blank">Max Rozen</a> {% now "Y" %}
+        </section>
+    </footer>
+{#    <section class="copyright">#}
+{#            © <a href="http://linkedin.com/in/rozenmd" target="_blank">Max Rozen</a> {% now "Y" %}#}
+{#    </section>#}
+{#</footer>#}
 
 {% endblock %}
 
