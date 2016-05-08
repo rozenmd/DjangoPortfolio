@@ -180,10 +180,10 @@ a:focus {
         border-bottom: 1px solid rgba(255,255,255,.3);
     }
 }
-.homepageFooter {
-    position: relative;
-    margin: 8rem 0 0 0;
-    padding: 0.5rem 15px;
+.otherPageFooter {
+    position: absolute;
+    /*margin: 8rem 0 0 0;*/
+    /*padding: 0.5rem 15px;*/
     /*border-top: #EBF2F6 1px solid;*/
     /*font-family: "Open Sans", sans-serif;*/
     font-size: 1rem;
@@ -694,16 +694,20 @@ header {
     width: 100%;
     display:block;
 }
-
+.wrap{
+    min-height: 100%;
+    /*margin-bottom: -25px;*/
+    /*background: #f1f6f8;*/
+}
 footer{
-     position: absolute;
+     /*position: absolute;*/
     left: 0;
     bottom: 0;
     /*height: 100px;*/
     width: 100%;
     overflow:hidden;
     /*position: relative;*/
-    margin: 8rem 0 0 0;
+    /*margin: 8rem 0 0 0;*/
     padding: 0.5rem 15px;
     border-top: #EBF2F6 1px solid;
     /*font-family: "Open Sans", sans-serif;*/
