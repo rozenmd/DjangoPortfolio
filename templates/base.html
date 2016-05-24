@@ -57,9 +57,10 @@
 </head>
 
 <body id="{% block body_id %}body{% endblock %}">
-<div class="wrap">
+
 <div class="navbar navbar-default navbar-fixed-top" role="navigation" style="background-color:white;">
-<div class="container">
+
+    <div class="container">
 <div class="navbar-header">
     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">{% trans "Toggle Navigation" %}</span>
@@ -79,7 +80,7 @@
 </div>
 </div>
 {% block intro %}{% endblock %}
-<div class="container">
+<div class="wrap"><div class="container">
 
 {% nevercache %}
 {% if messages %}
