@@ -6,7 +6,8 @@ from wsgiref.util import FileWrapper
 from DjangoPortfolio.settings import BASE_DIR
 import os
 SCRIPT = BASE_DIR + '/static/js/rasterize.js'
-PHANTOM = "/usr/local/lib/node_modules/phantomjs-prebuilt/lib/phantom/bin/phantomjs" #"/usr/local/bin/phantomjs"
+PHANTOM = "/usr/lib/node_modules/phantomjs-prebuilt/lib/phantom/bin/phantomjs" #"/usr/local/bin/phantomjs"
+OSX_PHANTOM = "/usr/local/lib/node_modules/phantomjs-prebuilt/lib/phantom/bin/phantomjs"
 class MyPdfView(View):
     def get(self, request, *args, **kwargs):
         outfile = BASE_DIR + '/test.pdf'
