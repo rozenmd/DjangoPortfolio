@@ -5,6 +5,7 @@ from django.http import StreamingHttpResponse, Http404
 from wsgiref.util import FileWrapper
 from DjangoPortfolio.settings import BASE_DIR
 from web.forms import UrlsForm
+from web.models import UrlRequest
 from django.shortcuts import render
 import re
 from django.template.loader import render_to_string
@@ -36,6 +37,8 @@ def urls_view(request, template="web/phantom.html"):
         if form.is_valid():
             url = str(request.POST.get('url'))
             if re.search(r'^(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)', url):
+                temp = UrlRequest(url=url)
+                temp.save()
                 return phantom(request, url)
             else:
                 return render(request, template, {'form': form, 'errors': 'URL did not resolve'})
