@@ -16,8 +16,8 @@ OSX_PHANTOM = "/usr/local/lib/node_modules/phantomjs-prebuilt/lib/phantom/bin/ph
 
 def phantom(request, url):
     outfile = BASE_DIR + '/test.pdf'
-    params = [OSX_PHANTOM, SCRIPT, url, outfile]
-    print (OSX_PHANTOM, SCRIPT, url, outfile)
+    params = [PHANTOM, SCRIPT, url, outfile]
+    print (PHANTOM, SCRIPT, url, outfile)
     exitcode = subprocess.call(params)
     if exitcode == 0:
         return_file = FileWrapper(open(outfile, 'r'))
