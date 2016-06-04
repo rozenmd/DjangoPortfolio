@@ -8,6 +8,7 @@ class UrlRequest(models.Model):
     The main course run every year. Resources are attached to it.
     """
     url = models.CharField(max_length=500)
+    time = models.DateTimeField(null=True)
 
     def __unicode__(self):
         return self.url

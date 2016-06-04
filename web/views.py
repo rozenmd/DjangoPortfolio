@@ -8,6 +8,7 @@ from web.forms import UrlsForm
 from web.models import UrlRequest
 from django.shortcuts import render
 import re
+import datetime
 from django.template.loader import render_to_string
 
 import os
@@ -37,7 +38,7 @@ def urls_view(request, template="web/phantom.html"):
         if form.is_valid():
             url = str(request.POST.get('url'))
             if re.search(r'^(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)', url):
-                temp = UrlRequest(url=url)
+                temp = UrlRequest(url=url, time=datetime.datetime.now())
                 temp.save()
                 return phantom(request, url)
             else:
