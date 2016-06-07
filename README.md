@@ -1,8 +1,6 @@
 # DjangoPortfolio
-My portfolio, rewritten to be a Django site running Mezzanine
+My portfolio, rewritten to be a Django site running Mezzanine. Also a URL to PDF converter (for funsies)
 
 ##TODO:
-- Add single-path folder to navigation in back-end
 - Write more blogs
-- Google Analytics
-- Fix blog page styling
+- Make it mobile responsive
