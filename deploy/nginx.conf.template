@@ -18,8 +18,8 @@ server {
 
 server {
     server_name %(domains_nginx)s;
-    listen 443 ssl http2 default_server;
-    listen [::]:443 ssl http2 default_server ipv6only=on;
+    listen 443 ssl default_server;
+    listen [::]:443 ssl default_server ipv6only=on;
     client_max_body_size 10M;
     keepalive_timeout    15;
     error_log /home/%(user)s/logs/%(proj_name)s_error_nginx.log info;
@@ -77,3 +77,17 @@ server {
 }
 
 
+server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    server_name %(domains_nginx)s;
+
+    ssl_certificate /etc/letsencrypt/live/maxrozen.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/maxrozen.com/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/maxrozen.com/fullchain.pem;
+    include /etc/nginx/snippets/ssl.conf;
+
+    location / {
+        return 301 https://www.mydomain.com$request_uri;
+    }
+}
