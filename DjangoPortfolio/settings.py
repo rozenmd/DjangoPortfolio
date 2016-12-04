@@ -301,6 +301,8 @@ OPTIONAL_APPS = (
     PACKAGE_NAME_FILEBROWSER,
     PACKAGE_NAME_GRAPPELLI,
 )
+SECRET_KEY = "53+8*z73o5km7p1p+m5ipl1z*m%k_tmj+7-m%%q^m*4mh4du_d"
+NEVERCACHE_KEY = "gjzs36h*(aoch^ww#9g41g_*ty2iu_m!q1+!p*ao&dlj(fd_kt"
 
 ##################
 # LOCAL SETTINGS #

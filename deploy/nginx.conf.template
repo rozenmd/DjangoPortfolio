@@ -12,6 +12,9 @@ server {
     keepalive_timeout    15;
     error_log /home/%(user)s/logs/%(proj_name)s_error_nginx.log info;
 
+    include /etc/nginx/snippets/letsencrypt.conf;
+
+
     %(ssl_disabled)s ssl_certificate      conf/%(proj_name)s.crt;
     %(ssl_disabled)s ssl_certificate_key  conf/%(proj_name)s.key;
     %(ssl_disabled)s ssl_session_cache    shared:SSL:10m;
@@ -25,6 +28,7 @@ server {
     }
 
     location / {
+        try_files $uri $uri/ =404;
         proxy_redirect      off;
         proxy_set_header    Host                    $host;
         proxy_set_header    X-Real-IP               $remote_addr;
