@@ -27,7 +27,7 @@
 
     <h1>URL to PDF</h1>
     <p>This form uses <a href="http://phantomjs.org/">PhantomJS</a> to transform any given URL to a PDF, downloaded straight to your desktop!</p>
-    <p>All URLs must start with http://</p>
+    <p>All URLs must start with http:// or https://</p>
     <form method="POST" class="" style="text-align:center;">{% csrf_token %}
         {% if errors %}
             <div style="color:red">{{ errors }}<br/></div>
