@@ -5,15 +5,18 @@ upstream %(proj_name)s {
 
 server {
 
-    listen 80;
-    %(ssl_disabled)s listen 443 ssl;
+    #listen 80;
+    listen 443 ssl;
     server_name %(domains_nginx)s;
     client_max_body_size 10M;
     keepalive_timeout    15;
     error_log /home/%(user)s/logs/%(proj_name)s_error_nginx.log info;
 
     include /etc/nginx/snippets/letsencrypt.conf;
-
+    ssl_certificate /etc/letsencrypt/live/maxrozen.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/maxrozen.com/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/maxrozen.com/fullchain.pem;
+    include /etc/nginx/snippets/ssl.conf;
 
     %(ssl_disabled)s ssl_certificate      conf/%(proj_name)s.crt;
     %(ssl_disabled)s ssl_certificate_key  conf/%(proj_name)s.key;
@@ -28,7 +31,7 @@ server {
     }
 
     location / {
-        try_files $uri $uri/ =404;
+
         proxy_redirect      off;
         proxy_set_header    Host                    $host;
         proxy_set_header    X-Real-IP               $remote_addr;
