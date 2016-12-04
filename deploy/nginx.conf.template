@@ -4,8 +4,8 @@ upstream %(proj_name)s {
 }
 
 server {
-    listen 80 default_server;
-    listen [::]:80 default_server ipv6only=on;
+    listen 80;
+    listen [::]:80 ipv6only=on;
     server_name %(domains_nginx)s;
 
     include /etc/nginx/snippets/letsencrypt.conf;
@@ -18,8 +18,8 @@ server {
 
 server {
     server_name %(domains_nginx)s;
-    listen 443 ssl default_server;
-    listen [::]:443 ssl default_server ipv6only=on;
+    listen 443 ssl;
+    listen [::]:443 ssl ipv6only=on;
     client_max_body_size 10M;
     keepalive_timeout    15;
     error_log /home/%(user)s/logs/%(proj_name)s_error_nginx.log info;
