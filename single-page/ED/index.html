@@ -319,7 +319,7 @@
         function getTops(source_group) {
             return {
                 all: function () {
-                    return source_group.top(10);
+                    return source_group.top(16);
                 }
             };
         }
@@ -490,6 +490,7 @@ var timeFormat = d3.time.format.utc("%H:%M");
         diagnosisChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
             .width(650)
             .height(400)
+            .ordering(function(d){ return -d.value; })
             .margins({top: 5, left: 10, right: 10, bottom: 20})
             .group(topDiagGroup)
             .dimension(diagnosisDim)
