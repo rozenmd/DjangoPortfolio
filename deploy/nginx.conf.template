@@ -53,6 +53,10 @@ server {
         autoindex on;
         root %(proj_path)s/;
     }
+    location /single-page/ED/ {
+        autoindex on;
+        root %(proj_path)s/;
+    }
     location /static/ {
         root            %(proj_path)s;
         access_log      off;

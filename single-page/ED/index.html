@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>RozenMD - analytics</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/agency.css" rel="stylesheet">
+    <!--<link rel="stylesheet" type="text/css" href="css/dc.css" media="screen" />-->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/dc/1.7.5/dc.css"/>
+    <link rel="stylesheet" href="css/screen.css" />
+    <!-- Custom Fonts -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Paediatric ED - Analytics</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="intro-text">
+                <div class="intro-lead-in">Welcome!</div>
+                <a href="#services" class="page-scroll btn btn-xl">Show Me More</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Services Section -->
+    <section id="services" style="padding:20px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Analytics</h2>
+                    <h3 class="section-subheading text-muted">Crossfiltered data from ED presentations</h3>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div style="width:33%;float:left">
+                    <div id="chart-ring-year" style="float:none;" >
+                        <strong style="text-align:center;">Years</strong>
+                        <a class="reset" href="javascript:yearRingChart.filterAll();CloselineChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div style="width:33%;float:left">
+                    <div id="quarter-chart" style="float:none;" >
+                        <strong>Quarters</strong>
+                        <a class="reset" href="javascript:quarterChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div style="width:33%;float:left">
+                    <div id="severity-chart" style="float:none;" >
+                        <strong>Triage Priority</strong>
+                        <a class="reset" href="javascript:severityChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row text-center">
+                <div style="width:25%;float:left">
+                   <div id="day-of-week-chart" style="float:none;">
+                        <strong>Day of Week</strong>
+                        <a class="reset" href="javascript:dayOfWeekChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div style="width:50%;float:left">
+                   <div id="depart-status-chart" style="float:none;">
+                        <strong>Departure Code</strong>
+                        <a class="reset" href="javascript:departStatusChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div style="width:25%;float:left" class="text-left">
+                    <strong>Departure Code Legend</strong>
+                    <br><br><br>
+                    <ul>
+                        <li>L = LEFT AGAINST MEDICAL ADVICE</li>
+                        <li>T = TRANSFERRED TO OTHER FACILITY</li>
+                        <li>W = DID NOT WAIT</li>
+                        <li>A = ADMITTED</li>
+                        <li>H = DISCHARGED</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="row text-center">
+                <div style="width:25%;float:left">
+                    <strong>Age frequency</strong>
+                   <div id="age-chart" style="float:none;">
+
+                        <a class="reset" href="javascript:ageChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div style="width:75%;float:left">
+                <strong>Diagnosis Frequency</strong>
+                   <div id="diagnosis-chart" style="float:none;">
+                        <a class="reset" href="javascript:diagnosisChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <hr>
+            <div class="container text-center">
+                <h2>Time waiting for Treatment vs Arrival Hour</h2>
+                <div id="wait-time-chart" style="float:none;"></div>
+
+            </div>
+            <hr>
+            <div class="container text-center">
+                <h2>Number of Patients per Arrival Hour</h2>
+                <div id="hour-of-day-chart" style="float:none;"></div>
+
+            </div>
+            <hr>
+            <div class="container text-center">
+                <h2>Number of Patients per day</h2>
+                <div id="chart-line-accidentsperday" style="float:none;"></div>
+            </div>
+             <hr>
+
+            <div class="row text-center">
+
+
+
+                <div class="row text-center" style="margin-left:0px;margin-right:0px;text-align:center;">
+                    <div id="data-count" class="dc-data-count">
+                        <span class="filter-count"></span> selected out of <span class="total-count"></span> records
+                    </div>
+                    <table class="table table-bordered table-hover dc-data-table dc-chart">
+                        <thead>
+                            <tr class="header">
+                                <th style="text-align:center;">Arrival Date</th>
+                                <th style="text-align:center;">Arrival Time</th>
+                                <th style="text-align:center;">Patient Age</th>
+                                <th style="text-align:center;">Triage Priority</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="copyright">Built with ❤ by <a href="https://www.linkedin.com/in/rozenmd" target="_blank">Max Rozen</a></span>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline social-buttons">
+                        <li><a href="https://www.linkedin.com/in/rozenmd"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <ul class="list-inline quicklinks">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="js/classie.js"></script>
+    <script src="js/cbpAnimatedHeader.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/agency.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.4.0/d3.min.js"></script>-->
+
+    <!--<script type="text/javascript" src="js/crossfilter.js"></script>-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.min.js"></script>
+
+    <!--<script type="text/javascript" src="js/dc.js"></script>-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/dc/1.7.5/dc.min.js"></script>
+
+
+<script>
+
+    var quarterChart = dc.pieChart('#quarter-chart');
+    var yearRingChart = dc.pieChart("#chart-ring-year");
+    var severityChart = dc.rowChart("#severity-chart");
+    var accLineChart = dc.lineChart("#chart-line-accidentsperday");
+    var dayOfWeekChart = dc.rowChart('#day-of-week-chart');
+    var ageChart = dc.rowChart('#age-chart');
+    var diagnosisChart = dc.rowChart('#diagnosis-chart');
+    var departStatusChart = dc.pieChart('#depart-status-chart');
+    var hourOfDayChart = dc.lineChart('#hour-of-day-chart');
+    var waitTimeChart = dc.lineChart('#wait-time-chart');
+
+
+    // var hourLineChart = dc.lineChart("#chart-line-accidentsperhour");
+
+    d3.csv("MainData.csv", function(data) {
+
+        var dateFormat = d3.time.format("%Y-%m-%d").parse;
+        var hourFormat = d3.time.format("%H:%M:%S").parse;
+        var fullFormat = d3.time.format("%Y-%m-%d %H:%M:%S").parse;
+        data.forEach(function(d) {
+            if (d['Arrival Date'] && d['Arrival Time']){
+                d.oldDate = d['Arrival Date Only'];
+                d.dd = dateFormat(d['Arrival Date Only']);
+                d.date = dateFormat(d['Arrival Date Only']);
+                d.Time = hourFormat(d['Arrival Time']);
+                d.Year=d.dd.getFullYear();
+                d.CountP = +1;
+                d.full_date = fullFormat(d['Arrival Date']);
+            }
+        });
+
+        var ndx = crossfilter(data);
+        var all = ndx.groupAll();
+        var dateDim = ndx.dimension(function(d) {return d.date;});
+        var fullDateDim = ndx.dimension(function(d) {return d.full_date;});
+        var hourDim = ndx.dimension(function(d) {return d.Time;});
+        var minDate = dateDim.bottom(1)[0].date;
+        var maxDate = dateDim.top(1)[0].date;
+        var minHour = hourDim.bottom(1)[0];
+        var maxHour = hourDim.top(1)[0];
+        var carsDmged = dateDim.group().reduceSum(function(d) { return d.CountP;});
+        var carsDmgedHour = hourDim.group().reduceSum(function(d) { return d.CountP;});
+        var yearDim  = ndx.dimension(function(d) {return +d.Year;});
+        var year_total = yearDim.group().reduceSum(function(d) {return d.CountP;});
+        var quarter = ndx.dimension(function (d) {
+            if (!d.dd){
+                debugger;
+            }
+            var month = d.dd.getMonth();
+            if (month <= 2) {
+                return 'Q1';
+            } else if (month > 2 && month <= 5) {
+                return 'Q2';
+            } else if (month > 5 && month <= 8) {
+                return 'Q3';
+            } else {
+                return 'Q4';
+            }
+        });
+        var ageDim = ndx.dimension(function(d){
+            return d[' Age  (yrs)'];
+        });
+        var ageGroup = ageDim.group();
+
+        var diagnosisDim = ndx.dimension(function(d){
+            return d['Diagnosis Desc.'];
+        });
+        function getTops(source_group) {
+            return {
+                all: function () {
+                    return source_group.top(10);
+                }
+            };
+        }
+        var diagnosisGroup = diagnosisDim.group();
+        var topDiagGroup = getTops(diagnosisGroup);
+
+        var departStatus = ndx.dimension(function(d){
+            return d['Depart Status Code'];
+        });
+        var departStatusGroup = departStatus.group();
+
+        var hourOfDay = ndx.dimension(function(d){
+            return d.Time.getHours();
+        });
+        var hourOfDayGroup = hourOfDay.group();
+        var dayOfWeek = ndx.dimension(function (d) {
+            var day = d.dd.getDay();
+            var name = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            return day + '.' + name[day];
+        });
+        var dayOfWeekGroup = dayOfWeek.group();
+        var quarterGroup = quarter.group().reduceSum(function (d) {
+            return d.CountP;
+        });
+        var severity = ndx.dimension(function (d) {return d['Triage Priority'];});
+        var severityGroup = severity.group().reduceSum(function (d) {return d.CountP;});
+        var cumGroup = dateDim.group().reduce(
+              //add
+                    function(p,v){
+                        p.count++;
+                        p.sum += +v['CountP'];
+                        p.avg = d3.round((p.sum/p.count),2);
+                        return p;
+                    },
+                    //remove
+                    function(p,v){
+                        p.count--;
+                        p.sum -= +v['CountP'];
+                        p.avg = d3.round((p.sum/p.count),2);
+                        return p;
+                    },
+                    //init
+                    function(p,v){
+                       return {count:0, avg:0, sum:0};
+                    }
+            );
+         var waitTimeGroup = hourOfDay.group().reduce(
+                    //add
+                    function(p,v){
+                        p.count++;
+                        p.sum += +v['Time to Treatment'];
+                        p.avg = d3.round((p.sum/p.count),2);
+                        return p;
+                    },
+                    //remove
+                    function(p,v){
+                        p.count--;
+                        p.sum -= +v['Time to Treatment'];
+                        p.avg = d3.round((p.sum/p.count),2);
+                        return p;
+                    },
+                    //init
+                    function(p,v){
+                       return {count:0, avg:0, sum:0};
+                    }
+                );
+
+var msPerHour = 1000*60*60;
+//TODO: Plot a histogram of age
+var timeFormat = d3.time.format.utc("%H:%M");
+
+       accLineChart.width(1000).height(300)
+                    .elasticY(true)
+                    .dimension(dateDim)
+                    .group(carsDmged,"Patients")
+                    .renderArea(true)
+                    .x(d3.time.scale().domain([minDate,maxDate]))
+                    .brushOn(true)
+                    .legend(dc.legend().x(50).y(10).itemHeight(13).gap(5))
+                    .yAxisLabel("Number of patients")
+                    .xAxisLabel("Arrival Date at ED");
+
+        hourOfDayChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
+            .width(1000).height(300)
+            .elasticY(true)
+//            .x(d3.time.scale().domain([minHour['Arrival Time'],maxHour['Arrival Time']]))
+            .x(d3.scale.linear().domain([0,24]))
+            .group(hourOfDayGroup,"Patients")
+            .dimension(hourOfDay)
+            .renderArea(true)
+            .elasticX(true)
+            .brushOn(false)
+            .legend(dc.legend().x(50).y(10).itemHeight(13).gap(5))
+            .yAxisLabel("Number of patients")
+            .xAxisLabel("Arrival hour at ED");
+//            .xUnits(d3.time.hours)
+//            .xAxis().tickFormat(d3.time.format('%H'));
+
+        waitTimeChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
+            .width(1000).height(300)
+            .elasticY(true)
+//            .x(d3.time.scale().domain([minDate,maxDate]))
+            .x(d3.scale.linear().domain([0,24]))
+            .group(waitTimeGroup,"Patients")
+            .dimension(dateDim).valueAccessor(function (p) {
+                return p.value.avg;
+            })
+            .renderArea(true)
+            .elasticX(true)
+            .brushOn(false)
+            .legend(dc.legend().x(50).y(10).itemHeight(13).gap(5))
+            .yAxisLabel("Average wait time for treatment")
+            .xAxisLabel("Arrival hour at ED");
+
+        yearRingChart.width(200).height(200)
+                    .dimension(yearDim)
+                    .group(year_total)
+                    .radius(80)
+                    .title(function(d){return d.data.key + ' - '+ d.data.value + ' - ' + dc.utils.printSingleValue((d.endAngle - d.startAngle) / (2*Math.PI) * 100) + '%';})
+                    .innerRadius(30);
+
+        quarterChart.width(200).height(200)
+                    .radius(80)
+                    .title(function(d){return d.data.key + ' - '+ d.data.value + ' - ' + dc.utils.printSingleValue((d.endAngle - d.startAngle) / (2*Math.PI) * 100) + '%';})
+                    .innerRadius(30)
+                    .dimension(quarter)
+                    .group(quarterGroup);
+        departStatusChart.width(250).height(250)
+                    .slicesCap(4)
+                    .innerRadius(30)
+                    .title(function(d){return d.data.key + ' - '+ d.data.value + ' - ' + dc.utils.printSingleValue((d.endAngle - d.startAngle) / (2*Math.PI) * 100) + '%';})
+                    .group(departStatusGroup)
+                    .dimension(departStatus)
+                    .label(function(d) {
+                            return d.data.key + ' - ' + Math.round((d.endAngle - d.startAngle) / Math.PI * 50) + '%';
+                    });
+        severityChart.width(200).height(200)
+
+                    .group(severityGroup)
+                    .dimension(severity)
+                    .margins({top: 20, left: 10, right: 10, bottom: 20})
+                    .elasticX(true)
+                    .xAxis().ticks(4);
+
+        dayOfWeekChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
+            .width(200)
+            .height(200)
+            .margins({top: 20, left: 10, right: 10, bottom: 20})
+            .group(dayOfWeekGroup)
+            .dimension(dayOfWeek)
+            .label(function (d) {
+                return d.key.split('.')[1];
+            })
+            .title(function (d) {
+                return d.value;
+            })
+            .elasticX(true)
+            .xAxis().ticks(4);
+        ageChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
+            .width(400)
+            .height(400)
+            .ordering(function(d){ return (+d.key) })
+            .margins({top: 5, left: 10, right: 10, bottom: 20})
+            .group(ageGroup)
+            .dimension(ageDim)
+            .elasticX(true)
+            .xAxis().ticks(4)
+        diagnosisChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
+            .width(650)
+            .height(400)
+            .margins({top: 5, left: 10, right: 10, bottom: 20})
+            .group(topDiagGroup)
+            .dimension(diagnosisDim)
+            .elasticX(true)
+            .xAxis().ticks(4);
+        dc.dataTable(".dc-data-table")
+                .dimension(dateDim)
+                .group(function(d) {
+                    return d.dd.getFullYear() + "/" + (d.dd.getMonth() + 1);
+                })
+                .size(10)
+                .columns([
+                    function(d) { return d.oldDate; },
+                    function(d) { return d['Arrival Time']; },
+                    function(d) { return d[' Age  (yrs)']; },
+                    function(d) { return d['Triage Priority']; },
+                    // function(d) { return d3.round(d.Close,2); },
+                    // function(d) { return d3.round(d.Return*100,2) + "%"; },
+                    // function(d) { return d.Quarter; }
+                ])
+                .sortBy(function (d) {
+                    return d.dd;
+                })
+                .order(d3.ascending)
+                .on("renderlet.<renderletKey>", function (table) {
+                    table.selectAll(".dc-table-group").classed("info", true);
+                });
+
+        dc.dataCount("#data-count")
+            .dimension(ndx) // set dimension to all data
+            .group(all); // set group to ndx.groupAll()
+        dc.renderAll();
+});
+</script>
+
+
+</body>
+
+</html>
