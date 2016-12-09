@@ -46,9 +46,11 @@
 <script src="{% static "js/jquery.js" %}"></script>
 <script src="{% static "js/bootstrap-extras.js" %}"></script>
 <script src="{% static "js/bootstrap.js" %}"></script>
+
     {% block extra_js %}{% endblock %}
 {% endcompress %}
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<script src="{% static "js/agency.js" %}"></script>
 <!--[if lt IE 9]>
 <script src="{% static "js/html5shiv.js" %}"></script>
 <script src="{% static "js/respond.min.js" %}"></script>
