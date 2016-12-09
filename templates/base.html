@@ -21,9 +21,10 @@
 <link href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
     {% compress css %}
-<link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
+<link rel="stylesheet" href="{% static "css/bootstrap.css" %}">
+
+        <link rel="stylesheet" href="{% static "css/mezzanine.css" %}">
 <link rel="stylesheet" href="{% static "css/bootstrap-theme.css" %}">
 <link rel="stylesheet" href="{% static "css/max-theme.css" %}">
 {% if LANGUAGE_BIDI %}
@@ -44,9 +45,10 @@
 {#<script src="{% static "mezzanine/js/"|add:settings.JQUERY_FILENAME %}"></script>#}
 <script src="{% static "js/jquery.js" %}"></script>
 <script src="{% static "js/bootstrap-extras.js" %}"></script>
-{% block extra_js %}{% endblock %}
-{% endcompress %}
 <script src="{% static "js/bootstrap.js" %}"></script>
+    {% block extra_js %}{% endblock %}
+{% endcompress %}
+
 <!--[if lt IE 9]>
 <script src="{% static "js/html5shiv.js" %}"></script>
 <script src="{% static "js/respond.min.js" %}"></script>
@@ -79,83 +81,43 @@
 </div>
 </div>
 {% block intro %}{% endblock %}
-<div class="wrap"><div class="container">
+<div class="wrap">
+        <div class="container">
 
-{% nevercache %}
-{% if messages %}
-<div class="messages">
-{% for message in messages %}
-<div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
-    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    {{ message }}
-</div>
-{% endfor %}
-</div>
-{% endif %}
-{% endnevercache %}
+            {% nevercache %}
+                {% if messages %}
+                    <div class="messages">
+                        {% for message in messages %}
+                            <div class="alert alert-dismissable alert-{{ message.tags }}" data-alert="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endnevercache %}
 
-<h1 class="headerOverride">{% block title %}{% endblock %}</h1>
+                <h1 class="headerOverride">{% block title %}{% endblock %}</h1>
 
-{#<ul class="breadcrumb">#}
-{#{% spaceless %}#}
-{#{% block breadcrumb_menu %}{% page_menu "pages/menus/breadcrumb.html" %}{% endblock %}#}
-{#{% endspaceless %}#}
-{#</ul>#}
+        </div>
 
-</div>
-
-<div class="container clearfix ">
-<div class="row clearfix">
-
-{#<div class="col-md-2 left">#}
-{#    {% block left_panel %}#}
-{#    <div class="panel panel-default tree">{% page_menu "pages/menus/tree.html" %}</div>#}
-{#    {% endblock %}#}
-{#</div>#}
-
-<div class="col-md-12 middle clearfix">
-    {% block main %}{% endblock %}
-</div>
-
-{#<div class="col-md-3 right">#}
-{#    {% nevercache %}#}
-{#    {% include "includes/language_selector.html" %}#}
-{#    {% include "includes/user_panel.html" %}#}
-{#    {% endnevercache %}#}
-{#    <div class="panel panel-default">#}
-{#    <div class="panel-body">#}
-{#    {% block right_panel %}#}
-{#    {% ifinstalled mezzanine.twitter %}#}
-{#    {% include "twitter/tweets.html" %}#}
-{#    {% endifinstalled %}#}
-{#    {% endblock %}#}
-{#    </div>#}
-{#    </div>#}
-{#</div>#}
-
-</div>
-
-</div>
-
-{% block footerOverride %}
-
-{#<footer class="clearfix">#}
-
-{% page_menu "pages/menus/footer.html" %}
-
-{#<div style="align-content:center;text-align:center">#}
-{#        #}
-{#</div>#}
+    <div class="container clearfix ">
+        <div class="row clearfix">
+            <div class="col-md-12 middle clearfix">
+                {% block main %}{% endblock %}
+            </div>
+        </div>
     </div>
-<footer class="clearfix otherPageFooter">
+</div>
+{% block footerOverride %}
+    {% page_menu "pages/menus/footer.html" %}
+
+
+    <footer class="clearfix otherPageFooter">
         <section class="copyright">
                 © <a href="http://linkedin.com/in/rozenmd" target="_blank">Max Rozen</a> {% now "Y" %}
         </section>
     </footer>
-{#    <section class="copyright">#}
-{#            © <a href="http://linkedin.com/in/rozenmd" target="_blank">Max Rozen</a> {% now "Y" %}#}
-{#    </section>#}
-{#</footer>#}
 
 {% endblock %}
 
