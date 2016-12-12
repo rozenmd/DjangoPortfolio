@@ -407,11 +407,13 @@ var timeFormat = d3.time.format.utc("%H:%M");
             .valueAccessor(function (p) {
                 return p.value.avg;
             })
-            .label(function(d){return d.data.key + ' - '+ d.data.value;})
+
             .dimension(hourOfDay)
             .renderArea(true)
             .elasticX(true)
             .brushOn(false)
+
+            .title(function(d){return 'Average - '+ d.data.value.avg;})
             .legend(dc.legend().x(50).y(10).itemHeight(13).gap(5))
             .yAxisLabel("Average wait time for treatment")
             .xAxisLabel("Arrival hour at ED");
