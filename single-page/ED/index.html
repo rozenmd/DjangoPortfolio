@@ -353,7 +353,7 @@
                         p.count++;
                         p.sum += +v['Time to Treatment'];
                         p.avg = p.count > 0 ? d3.round((p.sum/p.count),2) : 0;
-{#                        console.log(p);#}
+                        //console.log(p);
                         return p;
                     },
                     //remove
@@ -361,7 +361,7 @@
                         p.count--;
                         p.sum -= +v['Time to Treatment'];
                         p.avg = p.count > 0 ? d3.round((p.sum/p.count),2) : 0;
-{#                        console.log(p);#}
+                      //console.log(p);
                         return p;
                     },
                     //init
