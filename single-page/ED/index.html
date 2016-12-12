@@ -289,8 +289,8 @@
         var maxDate = dateDim.top(1)[0].date;
         var minHour = hourDim.bottom(1)[0];
         var maxHour = hourDim.top(1)[0];
-        var carsDmged = dateDim.group().reduceSum(function(d) { return d.CountP;});
-        var carsDmgedHour = hourDim.group().reduceSum(function(d) { return d.CountP;});
+        var patientGroup = dateDim.group().reduceSum(function(d) { return d.CountP;});
+        var patientGroupHour = hourDim.group().reduceSum(function(d) { return d.CountP;});
         var yearDim  = ndx.dimension(function(d) {return +d.Year;});
         var year_total = yearDim.group().reduceSum(function(d) {return d.CountP;});
         var quarter = ndx.dimension(function (d) {
@@ -346,39 +346,22 @@
         });
         var severity = ndx.dimension(function (d) {return d['Triage Priority'];});
         var severityGroup = severity.group().reduceSum(function (d) {return d.CountP;});
-        var cumGroup = dateDim.group().reduce(
-              //add
-                    function(p,v){
-                        p.count++;
-                        p.sum += +v['CountP'];
-                        p.avg = d3.round((p.sum/p.count),2);
-                        return p;
-                    },
-                    //remove
-                    function(p,v){
-                        p.count--;
-                        p.sum -= +v['CountP'];
-                        p.avg = d3.round((p.sum/p.count),2);
-                        return p;
-                    },
-                    //init
-                    function(p,v){
-                       return {count:0, avg:0, sum:0};
-                    }
-            );
-         var waitTimeGroup = hourOfDay.group().reduce(
+
+        var waitTimeGroup = hourOfDay.group().reduce(
                     //add
                     function(p,v){
                         p.count++;
                         p.sum += +v['Time to Treatment'];
-                        p.avg = d3.round((p.sum/p.count),2);
+                        p.avg = p.count > 0 ? d3.round((p.sum/p.count),2) : 0;
+{#                        console.log(p);#}
                         return p;
                     },
                     //remove
                     function(p,v){
                         p.count--;
                         p.sum -= +v['Time to Treatment'];
-                        p.avg = d3.round((p.sum/p.count),2);
+                        p.avg = p.count > 0 ? d3.round((p.sum/p.count),2) : 0;
+{#                        console.log(p);#}
                         return p;
                     },
                     //init
@@ -394,7 +377,7 @@ var timeFormat = d3.time.format.utc("%H:%M");
        accLineChart.width(1000).height(300)
                     .elasticY(true)
                     .dimension(dateDim)
-                    .group(carsDmged,"Patients")
+                    .group(patientGroup,"Patients")
                     .renderArea(true)
                     .x(d3.time.scale().domain([minDate,maxDate]))
                     .brushOn(true)
@@ -405,7 +388,6 @@ var timeFormat = d3.time.format.utc("%H:%M");
         hourOfDayChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
             .width(1000).height(300)
             .elasticY(true)
-//            .x(d3.time.scale().domain([minHour['Arrival Time'],maxHour['Arrival Time']]))
             .x(d3.scale.linear().domain([0,24]))
             .group(hourOfDayGroup,"Patients")
             .dimension(hourOfDay)
@@ -415,8 +397,6 @@ var timeFormat = d3.time.format.utc("%H:%M");
             .legend(dc.legend().x(50).y(10).itemHeight(13).gap(5))
             .yAxisLabel("Number of patients")
             .xAxisLabel("Arrival hour at ED");
-//            .xUnits(d3.time.hours)
-//            .xAxis().tickFormat(d3.time.format('%H'));
 
         waitTimeChart /* dc.rowChart('#day-of-week-chart', 'chartGroup') */
             .width(1000).height(300)
@@ -424,9 +404,11 @@ var timeFormat = d3.time.format.utc("%H:%M");
 //            .x(d3.time.scale().domain([minDate,maxDate]))
             .x(d3.scale.linear().domain([0,24]))
             .group(waitTimeGroup,"Patients")
-            .dimension(dateDim).valueAccessor(function (p) {
+            .valueAccessor(function (p) {
                 return p.value.avg;
             })
+            .label(function(d){return d.data.key + ' - '+ d.data.value;})
+            .dimension(hourOfDay)
             .renderArea(true)
             .elasticX(true)
             .brushOn(false)
