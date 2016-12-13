@@ -20,7 +20,7 @@ app.controller('cfgController',function($scope){
     */
 });
 app.controller('obsController', function($scope, $http){
-  $http.get("http://api.wunderground.com/api/527dcdb90fd1ec35/conditions/q/Australia/Sydney.json")
+  $http.get("https://api.wunderground.com/api/527dcdb90fd1ec35/conditions/q/Australia/Sydney.json")
         .then(function(response) {$scope.current_observation = response.data;});
 });
 
@@ -32,7 +32,7 @@ app.controller('geoController', function($scope, $http){
     };
     function error(err) {
       console.warn('ERROR(' + err.code + '): ' + err.message);
-      var wundergroundURI = "http://api.wunderground.com/api/527dcdb90fd1ec35/geolookup/conditions/q/autoip.json"
+      var wundergroundURI = "https://api.wunderground.com/api/527dcdb90fd1ec35/geolookup/conditions/q/autoip.json"
             $http.get(wundergroundURI)
             .then(function(response) {
               $scope.current_observation = response.data;
@@ -43,7 +43,7 @@ app.controller('geoController', function($scope, $http){
     };
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position, error,options){
-        var wundergroundURI = "http://api.wunderground.com/api/527dcdb90fd1ec35/geolookup/conditions/q/"+position.coords.latitude+","+position.coords.longitude+".json"
+        var wundergroundURI = "https://api.wunderground.com/api/527dcdb90fd1ec35/geolookup/conditions/q/"+position.coords.latitude+","+position.coords.longitude+".json"
             $http.get(wundergroundURI)
             .then(function(response) {
               $scope.current_observation = response.data;
@@ -55,7 +55,7 @@ app.controller('geoController', function($scope, $http){
                 
             } else { 
                 x.innerHTML = "Geolocation is not supported by this browser.";
-                var wundergroundURI = "http://api.wunderground.com/api/527dcdb90fd1ec35/geolookup/conditions/q/autoip.json"
+                var wundergroundURI = "https://api.wunderground.com/api/527dcdb90fd1ec35/geolookup/conditions/q/autoip.json"
             $http.get(wundergroundURI)
             .then(function(response) {
               $scope.current_observation = response.data;
@@ -69,7 +69,7 @@ app.controller('geoController', function($scope, $http){
 });
 
 app.controller('mapController', function($scope, $http){
-  var wundergroundURI = "http://api.wunderground.com/api/527dcdb90fd1ec35/geolookup/conditions/q/autoip.json"
+  var wundergroundURI = "https://api.wunderground.com/api/527dcdb90fd1ec35/geolookup/conditions/q/autoip.json"
   var lat;
   var lon;
       $http.get(wundergroundURI)
@@ -82,8 +82,8 @@ app.controller('mapController', function($scope, $http){
           var mapboxAccessToken = 'pk.eyJ1Ijoicm96ZW5tZCIsImEiOiJlODZmMjk3NDBmYTBhODc5M2U0NDBiYzUyMWM3YjlmOSJ9.muc0sJgn7kvqjzT25Sch-A';
           var tiles = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapboxAccessToken, {
               id: 'mapbox.streets',
-              attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-              '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+              attribution: 'Map data &copy; <a href="https://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+              '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
               'Imagery © <a href="http://mapbox.com">Mapbox</a>'
               }),
             latlng = L.latLng(lat, lon);
@@ -94,7 +94,7 @@ app.controller('mapController', function($scope, $http){
           $.getJSON("bom.geojson", function(data) {
               var geojson = L.geoJson(data, {
               onEachFeature: function (feature, layer) {
-              var wundergroundURI = "http://api.wunderground.com/api/527dcdb90fd1ec35/geolookup/conditions/q/"+feature.geometry.coordinates.reverse() +".json";
+              var wundergroundURI = "https://api.wunderground.com/api/527dcdb90fd1ec35/geolookup/conditions/q/"+feature.geometry.coordinates.reverse() +".json";
               layer.bindPopup('<b>' + feature.properties.Name + ' - '+ feature.properties.State +'</b><br> Current temp: see <a target=_blank href="'+wundergroundURI+'">here</a>'); 
               }
               });
