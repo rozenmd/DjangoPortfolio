@@ -5,18 +5,18 @@ upstream %(proj_name)s {
 
 server {
     listen 80;
-    server_name %(domains_nginx)s www.maxrozen.com;
+    server_name %(domains_nginx)s;
 
     include /etc/nginx/snippets/letsencrypt.conf;
 
-    location / {
-        return 301 https://maxrozen.com$request_uri;
-    }
+    #location / {
+    #    return 301 https://maxrozen.com$request_uri;
+    #}
 
 }
 
 server {
-    server_name %(domains_nginx)s www.maxrozen.com;
+    server_name %(domains_nginx)s;
     listen 443 ssl;
     client_max_body_size 10M;
     keepalive_timeout    15;
