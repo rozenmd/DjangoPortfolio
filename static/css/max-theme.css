@@ -676,6 +676,7 @@ body {
   display: inline;
   height: 170px;
   max-width: 100%;
+    width:100%
 }
 #portfolio .portfolio-item .portfolio-caption {
     margin: 0 auto;
