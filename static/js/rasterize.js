@@ -35,15 +35,49 @@ if (system.args.length < 3 || system.args.length > 5) {
     if (system.args.length > 4) {
         page.zoomFactor = system.args[4];
     }
-    page.open(address, function (status) {
-        if (status !== 'success') {
-            console.log('Unable to load the address!');
-            phantom.exit(1);
-        } else {
-            window.setTimeout(function () {
-                page.render(output);
-                phantom.exit();
-            }, 200);
-        }
-    });
+    // page.open(address, function (status) {
+    //     if (status !== 'success') {
+    //         console.log('Unable to load the address!');
+    //         phantom.exit(1);
+    //     } else {
+    //         window.setTimeout(function () {
+    //             document.body.bgColor = 'white';
+    //             page.render(output);
+    //             phantom.exit();
+    //         }, 200);
+    //     }
+    // });
+
+    page.open(address, function(status) {
+      if (status !== 'success') {
+        console.error('err', address);
+        phantom.exit(1)
+      } else {
+        page.evaluate(function() {
+          function activateAllStylesheets(document) {
+            for (var k in document.styleSheets) {
+              const styleSheet = document.styleSheets[k];
+              if (typeof styleSheet === 'object' && 'rules' in styleSheet && styleSheet.rules !== null) {
+                const rules = styleSheet.rules;
+                Object.keys(rules)
+                  .forEach(function(r) {
+                    if (typeof rules[r].media !== 'undefined') {
+                      rules[r].media.mediaText = rules[r].media.mediaText.replace('screen', 'all');
+                      console.log(rules[r].media.mediaText)
+                    }
+                  })
+              }
+            }
+          }
+          jQuery('[media]').attr('media', 'all');
+          setTimeout(function() {
+            activateAllStylesheets(document)
+          }, 200)
+        });
+        window.setTimeout(function() {
+          page.render(output)
+
+        }, 1000)
+      }
+    })
 }
