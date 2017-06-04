@@ -18,7 +18,7 @@ OSX_PHANTOM = "/usr/local/lib/node_modules/phantomjs-prebuilt/lib/phantom/bin/ph
 
 def phantom(request, url):
     outfile = BASE_DIR + '/test.pdf'
-    params = [PHANTOM, SCRIPT, url, outfile]
+    params = [PHANTOM, SCRIPT, url, outfile, 'A4']
     print (PHANTOM, SCRIPT, url, outfile)
     exitcode = subprocess.call(params)
     if exitcode == 0:
@@ -42,7 +42,7 @@ def urls_view(request, template="web/phantom.html"):
                 temp.save()
                 return phantom(request, url)
             else:
-                return render(request, template, {'form': form, 'errors': 'URL did not resolve'})
+                return render(request, template, {'form': form, 'errors': 'Could not fetch that URL, Sorry!'})
 
     return render(request, template, {'form': form})
 
