@@ -19,8 +19,8 @@ admin.autodiscover()
 urlpatterns = i18n_patterns(
     # Change the admin prefix here to use an alternate URL for the
     # admin interface, which would be marginally more secure.
-    url("^admin/", include(admin.site.urls)),
-    url("^url-to-pdf-converter/", urls_view),
+    url("^legacy/admin/", include(admin.site.urls)),
+    url("^legacy/url-to-pdf-converter/", urls_view),
 )
 
 if settings.USE_MODELTRANSLATION:
