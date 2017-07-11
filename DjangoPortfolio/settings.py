@@ -253,8 +253,11 @@ INSTALLED_APPS = (
 )
 AWS_STORAGE_BUCKET_NAME = 'rozenmd-djangoportfolio'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+COMPRESS_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+STATIC_URL = COMPRESS_URL
+COMPRESS_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
 # List of middleware classes to use. Order is important; in the request phase,
 # these middleware classes will be applied in the order given, and in the
 # response phase the middleware will be applied in reverse order.
