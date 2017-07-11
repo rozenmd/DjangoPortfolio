@@ -19,8 +19,8 @@ admin.autodiscover()
 urlpatterns = i18n_patterns(
     # Change the admin prefix here to use an alternate URL for the
     # admin interface, which would be marginally more secure.
-    url("^/admin/", include(admin.site.urls)),
-    url("^/url-to-pdf-converter/", urls_view),
+    url("^legacy/admin/", include(admin.site.urls)),
+    url("^legacy/url-to-pdf-converter/", urls_view),
 )
 
 if settings.USE_MODELTRANSLATION:
@@ -44,7 +44,7 @@ urlpatterns += [
     # one homepage pattern, so if you use a different one, comment this
     # one out.
 
-    url("^", direct_to_template, {"template": "index.html"}, name="home"),
+    url("^legacy$", direct_to_template, {"template": "index.html"}, name="home"),
 
     # HOMEPAGE AS AN EDITABLE PAGE IN THE PAGE TREE
     # ---------------------------------------------
@@ -84,7 +84,7 @@ urlpatterns += [
     # ``mezzanine.urls``, go right ahead and take the parts you want
     # from it, and use them directly below instead of using
     # ``mezzanine.urls``.
-    url("^", include("mezzanine.urls")),
+    # url("^", include("mezzanine.urls")),
 
     # MOUNTING MEZZANINE UNDER A PREFIX
     # ---------------------------------
@@ -100,7 +100,7 @@ urlpatterns += [
     # Note that for any of the various homepage patterns above, you'll
     # need to use the ``SITE_PREFIX`` setting as well.
 
-    # url("^%s/" % settings.SITE_PREFIX, include("mezzanine.urls")),
+    url("^%s/" % settings.SITE_PREFIX, include("mezzanine.urls")),
 
 ]
 
