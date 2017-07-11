@@ -291,8 +291,8 @@ MIDDLEWARE_CLASSES = (
 PACKAGE_NAME_FILEBROWSER = "filebrowser_safe"
 PACKAGE_NAME_GRAPPELLI = "grappelli_safe"
 # Move the domain root
-# USE_X_FORWARDED_HOST = True
-# FORCE_SCRIPT_NAME = '/legacy'
+USE_X_FORWARDED_HOST = True
+FORCE_SCRIPT_NAME = '/legacy'
 SITE_PREFIX = "legacy"
 
 #########################
