@@ -169,7 +169,7 @@ CACHE_MIDDLEWARE_KEY_PREFIX = PROJECT_APP
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = "/legacy/static/"
+STATIC_URL = "/static/"
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -288,8 +288,9 @@ MIDDLEWARE_CLASSES = (
 PACKAGE_NAME_FILEBROWSER = "filebrowser_safe"
 PACKAGE_NAME_GRAPPELLI = "grappelli_safe"
 # Move the domain root
-USE_X_FORWARDED_HOST = True
+# USE_X_FORWARDED_HOST = True
 # FORCE_SCRIPT_NAME = '/legacy'
+SITE_PREFIX = "legacy"
 
 #########################
 # OPTIONAL APPLICATIONS #
