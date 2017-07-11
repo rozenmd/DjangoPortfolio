@@ -44,7 +44,7 @@ urlpatterns += [
     # one homepage pattern, so if you use a different one, comment this
     # one out.
 
-    url("^%s$" % settings.SITE_PREFIX, direct_to_template, {"template": "index.html"}, name="home"),
+    url("^legacy/", direct_to_template, {"template": "index.html"}, name="home"),
 
     # HOMEPAGE AS AN EDITABLE PAGE IN THE PAGE TREE
     # ---------------------------------------------
@@ -100,7 +100,7 @@ urlpatterns += [
     # Note that for any of the various homepage patterns above, you'll
     # need to use the ``SITE_PREFIX`` setting as well.
 
-    url("^%s/" % settings.SITE_PREFIX, include("mezzanine.urls")),
+    url("^legacy/", include("mezzanine.urls")),
 
 ]
 
