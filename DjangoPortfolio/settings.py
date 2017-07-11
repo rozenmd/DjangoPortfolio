@@ -1,10 +1,8 @@
-
 from __future__ import absolute_import, unicode_literals
 import os
 
 from django import VERSION as DJANGO_VERSION
 from django.utils.translation import ugettext_lazy as _
-
 
 ######################
 # MEZZANINE SETTINGS #
@@ -85,7 +83,6 @@ from django.utils.translation import ugettext_lazy as _
 # INSTALLED_APPS setting.
 USE_MODELTRANSLATION = False
 
-
 ########################
 # MAIN DJANGO SETTINGS #
 ########################
@@ -135,7 +132,6 @@ AUTHENTICATION_BACKENDS = ("mezzanine.core.auth_backends.MezzanineBackend",)
 # a mode you'd pass directly to os.chmod.
 FILE_UPLOAD_PERMISSIONS = 0o644
 
-
 #############
 # DATABASES #
 #############
@@ -157,7 +153,6 @@ DATABASES = {
     }
 }
 
-
 #########
 # PATHS #
 #########
@@ -174,7 +169,7 @@ CACHE_MIDDLEWARE_KEY_PREFIX = PROJECT_APP
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
-STATIC_URL = "/static/"
+STATIC_URL = "/legacy/static/"
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -228,7 +223,6 @@ TEMPLATES = [
 if DJANGO_VERSION < (1, 9):
     del TEMPLATES[0]["OPTIONS"]["builtins"]
 
-
 ################
 # APPLICATIONS #
 ################
@@ -252,10 +246,15 @@ INSTALLED_APPS = (
     "mezzanine.galleries",
     "mezzanine.twitter",
     "web",
+    'storages',
+
     # "mezzanine.accounts",
     # "mezzanine.mobile",
 )
-
+AWS_STORAGE_BUCKET_NAME = 'rozenmd-djangoportfolio'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+STATIC_URL = "https://%s/" % AWS_S3_CUSTOM_DOMAIN
+STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 # List of middleware classes to use. Order is important; in the request phase,
 # these middleware classes will be applied in the order given, and in the
 # response phase the middleware will be applied in reverse order.
@@ -288,6 +287,9 @@ MIDDLEWARE_CLASSES = (
 # at the moment we are using custom forks of them.
 PACKAGE_NAME_FILEBROWSER = "filebrowser_safe"
 PACKAGE_NAME_GRAPPELLI = "grappelli_safe"
+# Move the domain root
+USE_X_FORWARDED_HOST = True
+FORCE_SCRIPT_NAME = '/legacy'
 
 #########################
 # OPTIONAL APPLICATIONS #
@@ -320,12 +322,12 @@ f = os.path.join(PROJECT_APP_PATH, "local_settings.py")
 if os.path.exists(f):
     import sys
     import imp
+
     module_name = "%s.local_settings" % PROJECT_APP
     module = imp.new_module(module_name)
     module.__file__ = f
     sys.modules[module_name] = module
-    exec(open(f, "rb").read())
-
+    exec (open(f, "rb").read())
 
 ####################
 # DYNAMIC SETTINGS #
