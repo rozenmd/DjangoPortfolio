@@ -41,19 +41,19 @@ server {
         proxy_set_header    X-Forwarded-Protocol    $scheme;
         proxy_pass          http://%(proj_name)s;
     }
-    location /single-page/vicroads/ {
+    location /legacy/single-page/vicroads/ {
         autoindex on;
         root %(proj_path)s/;
     }
-    location /single-page/can-i-go-outside-yet/ {
+    location /legacy/single-page/can-i-go-outside-yet/ {
         autoindex on;
         root %(proj_path)s/;
     }
-    location /single-page/crossfiltercalcs/ {
+    location /legacy/single-page/crossfiltercalcs/ {
         autoindex on;
         root %(proj_path)s/;
     }
-    location /single-page/ED/ {
+    location /legacy/single-page/ED/ {
         autoindex on;
         root %(proj_path)s/;
     }
