@@ -289,7 +289,7 @@ PACKAGE_NAME_FILEBROWSER = "filebrowser_safe"
 PACKAGE_NAME_GRAPPELLI = "grappelli_safe"
 # Move the domain root
 USE_X_FORWARDED_HOST = True
-FORCE_SCRIPT_NAME = '/legacy'
+# FORCE_SCRIPT_NAME = '/legacy'
 
 #########################
 # OPTIONAL APPLICATIONS #
