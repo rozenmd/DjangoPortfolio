@@ -3,6 +3,10 @@ upstream %(proj_name)s {
     server unix:%(proj_path)s/gunicorn.sock fail_timeout=0;
 }
 
+upstream rest_node_js {
+    server  127.0.0.1:3000;
+}
+
 server {
     listen 80;
     server_name %(domains_nginx)s;
@@ -27,15 +31,18 @@ server {
     ssl_trusted_certificate /etc/letsencrypt/live/maxrozen.com/fullchain.pem;
     include /etc/nginx/snippets/ssl.conf;
 
-
+    ssl on;
+    gzip on;
+    
     # Deny illegal Host headers
     if ($host !~* ^(%(domains_regex)s)$) {
         return 444;
     }
 
     location / {
-        autoindex on;
-        root /home/ubuntu/react_portfolio/;
+
+        proxy_pass http://rest_node_js;
+        proxy_redirect off;
     }
     location /legacy/ {
         proxy_redirect      off;
