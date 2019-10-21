@@ -14,7 +14,7 @@ django-phantom-pdf==0.3
 django-storages==1.5.2
 docutils==0.13.1
 durationpy==0.4
-ecdsa==0.13
+ecdsa==0.13.3
 Fabric==1.10.2
 filebrowser-safe==0.4.3
 future==0.16.0
