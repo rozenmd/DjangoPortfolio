@@ -8,7 +8,7 @@ botocore==1.5.40
 certifi==2017.4.17
 chardet==3.0.3
 click==6.7
-Django==1.9.4
+Django==1.11.29
 django-contrib-comments==1.6.2
 django-phantom-pdf==0.3
 django-storages==1.5.2
