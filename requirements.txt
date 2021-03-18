@@ -31,7 +31,7 @@ Mezzanine==4.1.0
 oauth==1.0.1
 oauthlib==1.0.0
 paramiko==1.16.0
-Pillow==3.1.1
+Pillow==8.1.1
 placebo==0.8.1
 psycopg2==2.6.1
 pycrypto==2.6.1
